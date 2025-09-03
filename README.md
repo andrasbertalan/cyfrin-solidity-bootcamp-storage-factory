@@ -54,5 +54,4 @@ It can serve as a code reference for beginners or as a showcase of my progress f
 
 Based on Cyfrin Solidity Bootcamp – Section 2 curriculum.
 
-Ha szeretnéd, átdolgozom rövidítő, vagy részletesebb verzióra, illetve hozzáadhatok példákat, “how to run” vagy “resources” szekciót is.
 

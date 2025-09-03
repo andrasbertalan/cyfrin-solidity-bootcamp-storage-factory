@@ -1,38 +1,27 @@
-// I'm a comment!
 // SPDX-License-Identifier: MIT
 
 pragma solidity ^0.8.19;
 
-// pragma solidity ^0.8.0;
-// pragma solidity >=0.8.0 <0.9.0;
+import {SimpleStorage, SimpleStorage2} from "./SimpleStorage.sol";
 
+contract StorageFactory{
 
-contract SimpleStorage {
-    uint256 myFavoriteNumber;
+    SimpleStorage[] public listOfSimpleStorageContracts;
 
-    struct Person {
-        uint256 favoriteNumber;
-        string name;
-    }
-    // uint256[] public anArray;
-    Person[] public listOfPeople;
-
-    mapping(string => uint256) public nameToFavoriteNumber;
-
-    function store(uint256 _favoriteNumber) public virtual {
-        myFavoriteNumber = _favoriteNumber;
+    function createSimpleStorageContract () public {
+        SimpleStorage newSimpleStorageContract = new SimpleStorage();
+        listOfSimpleStorageContracts.push (newSimpleStorageContract);
     }
 
-    function retrieve() public view returns (uint256) {
-        return myFavoriteNumber;
+    function sfStore(uint256 _SimpleStorageIndex, uint256 _newSimpleStorageNumber) public {
+        //Address
+        //ABI - Application Binary Interface
+      
+        listOfSimpleStorageContracts[_SimpleStorageIndex].store(_newSimpleStorageNumber);
+    }
+    function sfGet(uint256 _SimpleStorageIndex) public view returns(uint256) {
+                 return listOfSimpleStorageContracts[_SimpleStorageIndex].retrieve();
+        }
     }
 
-    function addPerson(string memory _name, uint256 _favoriteNumber) public {
-        listOfPeople.push(Person(_favoriteNumber, _name));
-        nameToFavoriteNumber[_name] = _favoriteNumber;
-    }
-}
 
-contract SimpleStorage2{}
-contract SimpleStorage3{}
-contract SimpleStorage4{}
